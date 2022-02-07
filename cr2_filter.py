@@ -19,7 +19,7 @@ coped_cr2 = 0
 coped_xmp = 0
 
 # Цикл перебора файлов в списке и копирование (добавлен прогрессбар tqdm)
-for i in tqdm(new_list_jpg, dynamic_ncols=True):
+for i in tqdm(new_list_jpg):
     path_plus_file_cr2 = f"{path_raw}\{i}.cr2"
     path_plus_file_xmp = f"{path_raw}\{i}.xmp"
     path_final_file_cr2 = f"{new_path}\{i}.cr2"
