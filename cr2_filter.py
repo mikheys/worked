@@ -4,6 +4,9 @@
 # Потом указывается путь куда будут копироваться cr2 файлы (каталог должен быть создан)
 import os, os.path, shutil
 from tqdm import tqdm
+from colorama import init
+from colorama import Fore, Back, Style
+init()
 
 try:
     # Вводим пути
@@ -36,8 +39,6 @@ try:
     print(f"\nСкопировано {coped_cr2} .cr2 файлов и {coped_xmp} .xmp файлов")
     print(f"Всего скопировано {coped_cr2 + coped_xmp} файла")
 except FileNotFoundError:
-    print('Файла или каталога не существует!')
+    print(Fore.BLACK, Back.RED, Style.BRIGHT + 'Файла или каталога не существует!'.upper())
 except:
-    print('Неизвестная ошибка!')
-else:
-    print('Ok')
+    print(Fore.BLACK, Back.RED, Style.BRIGHT + 'Неизвестная ошибка!'.upper())
