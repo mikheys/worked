@@ -39,6 +39,7 @@ try:
     print(f"\nСкопировано {coped_cr2} .cr2 файлов и {coped_xmp} .xmp файлов")
     print(f"Всего скопировано {coped_cr2 + coped_xmp} файла")
 except FileNotFoundError:
-    print(Fore.BLACK, Back.RED, Style.BRIGHT + 'Файла или каталога не существует!'.upper())
+    print(Fore.BLACK, Back.RED, Style.BRIGHT + 'Файла или каталога не существует! '.upper() + Style.RESET_ALL)
 except:
-    print(Fore.BLACK, Back.RED, Style.BRIGHT + 'Неизвестная ошибка!'.upper())
+    print(Fore.BLACK, Back.RED, Style.BRIGHT + 'Неизвестная ошибка! '.upper() + Style.RESET_ALL)
+input('\nPress ENTER to exit')
