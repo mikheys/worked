@@ -2,20 +2,21 @@
 # С начала указывается путь где лежат jpg файлы
 # Потом указывается путь где лежат cr2 файлы
 # Потом указывается путь куда будут копироваться cr2 файлы (каталог должен быть создан)
-import os, os.path, shutil
+import os.path
+import shutil
+from colorama import Back, Style, init
 from tqdm import tqdm
-from colorama import init
-from colorama import Fore, Back, Style
+
 init()
 
 try:
     # Вводим пути и проверяем их наличие
     path_jpg, path_raw, new_path = "null", "null", "null"
-    while os.path.exists(path_jpg) != True:
+    while not os.path.exists(path_jpg):
         path_jpg = input("Введите путь каталога с jpg: ")
-    while os.path.exists(path_raw) != True:
+    while not os.path.exists(path_raw):
         path_raw = input("Введите путь каталога с raw: ")
-    while os.path.exists(new_path) != True:
+    while not os.path.exists(new_path):
         new_path = input("Введите путь к папке куда будем копировать : ")
 
     # Создаём список из имён файлов jpg и убираем у них расширения
@@ -26,11 +27,11 @@ try:
 
     # Цикл перебора файлов в списке и копирование (добавлен прогресс бар tqdm)
     for i in tqdm(list_jpg):
-        if os.path.isfile(f"{path_raw}\{i}.cr2"):
-            shutil.copy(f"{path_raw}\{i}.cr2", f"{new_path}\{i}.cr2")
+        if os.path.isfile(f"{path_raw}\\{i}.cr2"):
+            shutil.copy(f"{path_raw}\\{i}.cr2", f"{new_path}\\{i}.cr2")
             coped_cr2 += 1
-        if os.path.isfile(f"{path_raw}\{i}.xmp"):
-            shutil.copy(f"{path_raw}\{i}.xmp", f"{new_path}\{i}.xmp")
+        if os.path.isfile(f"{path_raw}\\{i}.xmp"):
+            shutil.copy(f"{path_raw}\\{i}.xmp", f"{new_path}\\{i}.xmp")
             coped_xmp += 1
 
     # Выводим информацию о количестве скопированных файлов
@@ -38,6 +39,7 @@ try:
     print(f"Всего скопировано {coped_cr2 + coped_xmp} файла")
 except FileNotFoundError:
     print(Back.RED, Style.BRIGHT + 'Файла или каталога не существует! '.upper() + Style.RESET_ALL)
-except:
-    print(Back.RED, Style.BRIGHT + 'Неизвестная ошибка! '.upper() + Style.RESET_ALL)
+except KeyboardInterrupt:
+    print("\n", Back.RED, Style.BRIGHT + 'Неизвестная ошибка! '.upper() + Style.RESET_ALL)
+
 input('\nPress ENTER to exit')
