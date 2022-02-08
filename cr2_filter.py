@@ -10,9 +10,15 @@ init()
 
 try:
     # Вводим пути
-    path_jpg = input("Введите путь каталога с jpg: ")
-    path_raw = input("Введите путь каталога с raw: ")
-    new_path = input("Введите путь к папке куда будем копировать : ")
+    path_jpg = "null"
+    while os.path.exists(path_jpg) != True:
+        path_jpg = input("Введите путь каталога с jpg: ")
+    path_raw = "null"
+    while os.path.exists(path_raw) != True:
+        path_raw = input("Введите путь каталога с raw: ")
+    new_path = "null"
+    while os.path.exists(new_path) != True:
+        new_path = input("Введите путь к папке куда будем копировать : ")
 
     # Создаём список из имён файлов jpg и убираем у них расширения
     file_list_jpg = os.listdir(path_jpg)
