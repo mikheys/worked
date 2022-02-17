@@ -4,14 +4,14 @@
 # Потом указывается путь куда будут копироваться cr2 файлы (каталог должен быть создан)
 import os.path
 import shutil
-from colorama import Back, Style, init
+from colorama import Back, Style, Fore, init
 from tqdm import tqdm
 
 init()
 
 try:
     # Вводим пути и проверяем их наличие
-    print("Для выхода из программы наберите exit")
+    print("Для выхода из программы наберите" + Fore.RED + " exit\n" + Style.RESET_ALL)
     path_jpg, path_raw, new_path = "null", "null", "null"
     while not os.path.exists(path_jpg):
         path_jpg = input("Введите путь каталога с jpg: ")
