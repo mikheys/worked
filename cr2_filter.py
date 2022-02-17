@@ -11,7 +11,7 @@ init()
 
 try:
     # Вводим пути и проверяем их наличие
-    print("Для выхода из программы наберите exit!!!")
+    print("Для выхода из программы наберите exit!!!!!")
     path_jpg, path_raw, new_path = "null", "null", "null"
     while not os.path.exists(path_jpg):
         path_jpg = input("Введите путь каталога с jpg: ")
